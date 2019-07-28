@@ -18,6 +18,8 @@
 #' dem <- paste0 (exdir, "/","Logan", "/", "logan.tif")
 #' download.file(url = "http://hydrology.usu.edu/taudem/taudem5/LoganDemo.zip", destfile = destfile)
 #' unzip(zipfile = destfile, exdir = exdir)
+#' library(rgdal)
+#' library(raster)
 #' z <- raster(dem)
 #' plot(z)
 #' out_dir <- paste0(exdir, "/", "R_examples")

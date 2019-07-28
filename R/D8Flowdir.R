@@ -1,6 +1,6 @@
 #' compute the D8 flow directions using a digital elevation model (DEM).
 #'
-#' Take a DEM (typically the depression filled file returned by Pitremove ()),
+#' Take a DEM (typically the depression filled file returned by Pitremove),
 #' and return a raster files containing the D8 slope and the D8 flow directions.
 #' @param dem character path to the raster file, A digital elevation model.
 #' @param out_dir character, the path to the directory where the output file is meant to be saved.
@@ -20,6 +20,8 @@
 #' dem <- paste0 (exdir, "/","Logan", "/", "logan.tif")
 #' download.file(url = "http://hydrology.usu.edu/taudem/taudem5/LoganDemo.zip", destfile = destfile)
 #' unzip(zipfile = destfile, exdir = exdir)
+#' library(rgdal)
+#' library(raster)
 #' z <- raster(dem)
 #' plot(z)
 #' out_dir <- paste0(exdir, "/", "R_examples")
