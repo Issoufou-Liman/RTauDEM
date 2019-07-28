@@ -1,0 +1,20 @@
+Package: RTauDEM
+Type: Package
+Title: Terrain Analysis Using Digital Elevation Models in R
+Version: 0.1.0
+Author: Issoufou Liman
+Maintainer: Issoufou Liman <L.issoufou@cgiar.org>; <issoufoul@gmail.com>
+Description: TauDEM is a set of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information
+    from topography as represented by a DEM.TauDEM is software developed at Utah State University (USU) for hydrologic digital
+    elevation model analysis and watershed delineation and may be obtained from http://hydrology.usu.edu/taudem/taudem5/.
+    The architecture of TauDEM separates the system into a set of command line executable functions that comprise the engine
+    that does the work, and a graphic user interface developed as a toolbox for ArcGIS.The ArcGIS toolbox uses system calls
+    to run these functions so running these functions from the command line, which is possible in R via system () and shell ()
+    functions, produces exactly the same output as an equivalent ArcGIS toolbox function. To use TauDEM command line functions
+    you need the TauDEM 5.3 software as well as MPI software. Our current Windows PC precompiled executables have been compiled
+    using the Microsoft HPC Pack 2012 MS-MPI libraries from http://www.microsoft.com/en-us/download/details.aspx?id=36045.
+    MPICH2 libraries are suggested for non-Windows installations.The installation instructions along with the list of required
+    dependencies for running TauDEM can be found at http://hydrology.usu.edu/taudem/taudem5/downloads.html.
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+LazyData: true
