@@ -4,7 +4,7 @@
 #' and return a raster files containing the D8 slope and the D8 flow directions.
 #' @inheritParams Pitremove
 #' @param fun the name of flow direction function depending on the version TauDEM in use.
-#' @param felfile character, path to the raster file, A digital elevation model (Must be TIFF File and typical
+#' @param felfile character, path to the input raster file, A digital elevation model (Must be TIFF File and typical
 #' submited to pitremove function aprior).
 #' @param sd8file character, path to the output slope file to be computed along the way by D8Flowdir.
 #' @param pfile character, path to the output flow direction file to be computed as end product.

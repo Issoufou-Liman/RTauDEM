@@ -10,7 +10,7 @@ D8Flowdir(fun = "D8Flowdir", felfile, sd8file = NULL, pfile = NULL,
 \arguments{
 \item{fun}{the name of flow direction function depending on the version TauDEM in use.}
 
-\item{felfile}{character, path to the raster file, A digital elevation model (Must be TIFF File and typical
+\item{felfile}{character, path to the input raster file, A digital elevation model (Must be TIFF File and typical
 submited to pitremove function aprior).}
 
 \item{sd8file}{character, path to the output slope file to be computed along the way by D8Flowdir.}

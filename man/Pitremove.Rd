@@ -10,7 +10,7 @@ Pitremove(fun = "PitRemove", demfile, felfile = NULL,
 \arguments{
 \item{fun}{the name of pit removal function depending on the version TauDEM in use.}
 
-\item{demfile}{character, path to the raster file, A digital elevation model (Must be TIFF File).}
+\item{demfile}{character, path to the input raster file, A digital elevation model (Must be TIFF File).}
 
 \item{felfile}{character, path to the output file.}
 

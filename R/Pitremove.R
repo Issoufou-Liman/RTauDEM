@@ -2,7 +2,7 @@
 #'
 #' Take a DEM, and a return a file comprising the DEM with pits removed.
 #' @param fun the name of pit removal function depending on the version TauDEM in use.
-#' @param demfile character, path to the raster file, A digital elevation model (Must be TIFF File).
+#' @param demfile character, path to the input raster file, A digital elevation model (Must be TIFF File).
 #' @param felfile character, path to the output file.
 #' @param number_of_processes, number of MPI processes to be used. The default is 8.This is the
 #' number of stripes that the domain will be divided into and the number of MPI parallel processes
