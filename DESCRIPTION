@@ -13,12 +13,15 @@ Authors@R: c(
 Depends:
     R (>= 3.4.0),
 Imports:
+    sp,
     raster,
+    methods
 Suggests:
     testthat,
     knitr,
     rmarkdown,
-    covr
+    covr,
+    rgdal
 Description: TauDEM is a set of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information
     from topography as represented by a DEM.TauDEM is software developed at Utah State University (USU) for hydrologic digital
     elevation model analysis and watershed delineation and may be obtained from http://hydrology.usu.edu/taudem/taudem5/.

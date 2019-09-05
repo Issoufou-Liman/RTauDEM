@@ -4,24 +4,25 @@
 \alias{D8Flowdir}
 \title{compute the D8 flow directions using a digital elevation model (DEM).}
 \usage{
-D8Flowdir(dem, out_dir = getwd(), slope_prefix = NULL,
-  fldir_prefix = NULL, slope_suffix = "sd8", fldir_suffix = "p")
+D8Flowdir(fun = "D8Flowdir", felfile, sd8file = NULL, pfile = NULL,
+  number_of_processes = 8)
 }
 \arguments{
-\item{dem}{character path to the raster file, A digital elevation model.}
+\item{fun}{the name of flow direction function depending on the version TauDEM in use.}
 
-\item{out_dir}{character, the path to the directory where the output file is meant to be saved.}
+\item{felfile}{character, path to the raster file, A digital elevation model (Must be TIFF File and typical
+submited to pitremove function aprior).}
 
-\item{slope_prefix}{character (optional), the choosen base file name for slope output file.}
+\item{sd8file}{character, path to the output slope file to be computed along the way by D8Flowdir.}
 
-\item{fldir_prefix}{character (optional), the choosen base file name for flow directions output file.}
+\item{pfile}{character, path to the output flow direction file to be computed as end product.}
 
-\item{slope_suffix}{character (optional), suffix to be added to the slope output file, useful for tracking purpose.}
-
-\item{fldir_suffix}{character (optional), suffix to be added to the flow directions output file, useful for tracking purpose.}
+\item{number_of_processes}{number of MPI processes to be used. The default is 8.This is the
+number of stripes that the domain will be divided into and the number of MPI parallel processes
+that will be spawned to evaluate each of the stripes.}
 }
 \value{
-raster object
+raster layer
 }
 \description{
 Take a DEM (typically the depression filled file returned by Pitremove),
@@ -31,27 +32,13 @@ and return a raster files containing the D8 slope and the D8 flow directions.
 TauDEM version 5.3 has been developed to read any raster supported by GDAL
 and write grid files in the GeoTiff (.tif) format only. TauDEM reads and writes ESRI
 shape files and text files generally identified using the .txt extension.
-}
-\examples{
-# This may take time and requires a connection to internet to download a DEM of size 5.3 MB.
-destfile <- "C:/Users/LIssoufou/Downloads/LoganDemo.zip"
-exdir <- "C:/Users/LIssoufou/Downloads"
-exdir <- paste0 (exdir, "/", "LoganDemo")
-dem <- paste0 (exdir, "/","Logan", "/", "logan.tif")
-download.file(url = "http://hydrology.usu.edu/taudem/taudem5/LoganDemo.zip", destfile = destfile)
-unzip(zipfile = destfile, exdir = exdir)
-library(rgdal)
-library(raster)
-z <- raster(dem)
-plot(z)
-out_dir <- paste0(exdir, "/", "R_examples")
-dir.create(file.path(exdir, 'R_examples'))
-prefix <- 'logan'
-suffix <- 'fel'
-fel <- Pitremove (dem = dem, out_dir = out_dir, prefix = prefix, suffix = suffix)
-fel <- raster(paste0(out_dir,"/", prefix, suffix, ".tif"))
-plot(fel)
-dem <- paste0(out_dir,"/", prefix, suffix, ".tif")
-D8Flowdir(dem=dem, out_dir = out_dir, slope_prefix = "slope_logan", fldir_prefix = "fldir_logan",
-slope_suffix = "sd8", fldir_suffix="p")
+
+D8Flowdir creates 2 grids. The first contains the flow direction from each grid cell to one of its adjacent
+or diagonal neighbors, calculated using the direction of steepest descent. The second contain the slope, as
+evaluated in the direction of steepest descent, and is reported as drop/distance, i.e. tan of the angle.
+Flow direction is reported as "no data" for any grid cell adjacent to the edge of the DEM domain, or adjacent
+to a "no data" value in the DEM. In flat areas, flow directions are assigned away from higher ground and
+towards lower ground using the method of Garbrecht and Martz (1997). The D8 flow direction algorithm may be
+applied to a DEM that has not had its pits filled, but it will then result in "no data" values for flow
+direction and slope at the lowest point of each pit.
 }
