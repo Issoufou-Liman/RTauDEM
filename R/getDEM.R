@@ -17,6 +17,7 @@
 #' @importFrom raster rasterToPoints crop getData extent ncell
 #' @importFrom sp proj4string<-
 #' @importFrom methods as
+#' @export
 getDEM <- function(shp, path=''){
   tile_spy <- extent(-180, 180, -60, 60)
   tile_spy <- as (tile_spy, 'SpatialPolygons')

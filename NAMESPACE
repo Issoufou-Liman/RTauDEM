@@ -3,6 +3,7 @@
 export(AreaD8)
 export(D8Flowdir)
 export(Pitremove)
+export(getDEM)
 importFrom(methods,as)
 importFrom(raster,crop)
 importFrom(raster,extension)
