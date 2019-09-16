@@ -3,6 +3,8 @@
 #' Takes a shapefile and download SRTM DEM covering the shapefile
 #' @param shp SpatialPolygonsDataFrame shapefile from the sp package
 #' @inheritParams raster::getData
+#' @inheritParams raster::mosaic
+#' @inheritDotParams raster::mosaic
 #' @return a rater layer or a list of raster layers (if the shapefile covers several tiles).
 #' @example
 #' \dontrun{
@@ -18,7 +20,7 @@
 #' @importFrom sp proj4string<-
 #' @importFrom methods as
 #' @export
-getDEM <- function(shp, path=''){
+getDEM <- function(shp, path='', fun, filename, ...){
   tile_spy <- extent(-180, 180, -60, 60)
   tile_spy <- as (tile_spy, 'SpatialPolygons')
   proj4string(tile_spy) <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
@@ -42,4 +44,6 @@ getDEM <- function(shp, path=''){
   } else {
     stop("invalid coordinates! Please check the shapefile projection and/or the coverage of SRTM data")
   }
+  out$fun <- fun
+  do.call('mosaic', out, filename, ...)
 }

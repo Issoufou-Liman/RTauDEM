@@ -4,12 +4,24 @@
 \alias{getDEM}
 \title{Download digital elevation model (DEM) by shapefile}
 \usage{
-getDEM(shp, path = "")
+getDEM(shp, path = "", fun, filename, ...)
 }
 \arguments{
 \item{shp}{SpatialPolygonsDataFrame shapefile from the sp package}
 
 \item{path}{Character. Path name indicating where to store the data. Default is the current working directory }
+
+\item{fun}{Function. E.g. mean, min, or max. Must be a function that accepts a 'na.rm' argument}
+
+\item{filename}{Character. Output filename (optional)}
+
+\item{...}{ Additional required (!) parameters. These are data set specific. See Details}
+
+\item{...}{Arguments passed on to \code{raster::mosaic}
+\describe{
+  \item{x}{Raster* object}
+  \item{y}{Raster* object}
+}}
 }
 \value{
 a rater layer or a list of raster layers (if the shapefile covers several tiles).
